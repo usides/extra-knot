@@ -1,0 +1,37 @@
+{
+  "name": "extra-knot",
+  "version": "1.0.0",
+  "description": "CLI program that extracts notes from code comments",
+  "source": "src/index.ts",
+  "main": "dist/extra-knot.js",
+  "targets": {
+    "main": {
+      "includeNodeModules": true,
+      "optimize": true,
+      "sourceMap": false
+    }
+  },
+  "engines": {
+    "node": ">= 12"
+  },
+  "scripts": {
+    "watch": "parcel watch",
+    "build": "parcel build",
+    "postbuild": "node create-executable-script.mjs",
+    "dev": "yarn watch & nodemon dist/extra-knot.js"
+  },
+  "author": "Aleksei Efimov",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.8.10",
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
+    "@typescript-eslint/parser": "^6.9.1",
+    "eslint": "^8.53.0",
+    "nodemon": "^3.0.1",
+    "parcel": "^2.10.2",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "chalk": "4.1.2"
+  }
+}
