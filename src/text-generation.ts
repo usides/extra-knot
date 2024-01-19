@@ -23,6 +23,14 @@ const getLineAndBlockText = (lines: IFoundLine[], fileExt: string) =>
 
 const getFileNotesText = (notes: IFoundEntity[]) =>
   notes
+    .sort((a, b) => {
+      const aSlashQty = (a.file.match(/\//gi) || []).length;
+      const bSlashQty = (b.file.match(/\//gi) || []).length;
+
+      if (aSlashQty > bSlashQty) return 1;
+      if (aSlashQty < bSlashQty) return -1;
+      return 0;
+    })
     .map(
       ({ file, fileExt, lines }) =>
         `## ${file}\n<!-- [[${file}]] -->\n\n${getLineAndBlockText(
