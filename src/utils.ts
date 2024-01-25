@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import process from "process";
 import { type IFoundEntity, type IFoundLine } from "./types";
+import { DEFAULT_CODE_LINES } from "./constants";
 
 export const scriptExecutionDir = process.cwd();
 
@@ -53,7 +54,8 @@ export const findLines = (files: string[], searchPattern: RegExp) => {
             const matchCodeSettings = line.match(/\[(\d+)\]/);
 
             const codeSettings =
-              (matchCodeSettings && parseInt(matchCodeSettings[1])) ?? 5;
+              (matchCodeSettings && parseInt(matchCodeSettings[1])) ??
+              DEFAULT_CODE_LINES;
 
             return [
               ...prev,
