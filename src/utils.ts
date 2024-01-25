@@ -15,22 +15,25 @@ export const findFiles = ({
   excludePattern?: RegExp;
 }) => {
   const files: string[] = [];
+  const dirFiles: string[] = [];
 
   fs.readdirSync(dir).forEach((file) => {
     const filePath = path.join(dir, file);
 
     if (excludePattern && excludePattern.test(filePath)) return;
 
-    if (fs.statSync(filePath).isDirectory()) {
-      files.push(...findFiles({ dir: filePath, filePattern, excludePattern }));
+    if (filePattern.test(file)) {
+      files.push(filePath);
     } else {
-      if (filePattern.test(file)) {
-        files.push(filePath);
+      if (fs.statSync(filePath).isDirectory()) {
+        dirFiles.push(
+          ...findFiles({ dir: filePath, filePattern, excludePattern })
+        );
       }
     }
   });
 
-  return files;
+  return [...files, ...dirFiles];
 };
 
 export const findLines = (files: string[], searchPattern: RegExp) => {
