@@ -16,10 +16,11 @@ Supporting file extensions: js, jsx, ts, tsx, css, scss, sass, html
 The accepted pattern for comment notes is:
 
 ```
-NOTE(n)[n]: note text
+NOTE(n)[n]:[#] note text
 ```
 
 Optional parameters:
 
 - `(n)` - specifies a note number.
 - `[n]` - specifies the quantity of code lines to be appended under the note text (default is 5, use 0 to remove the code block).
+- `[#]` - dash "-" will be omitted in prepared note text if a note starts with "#"

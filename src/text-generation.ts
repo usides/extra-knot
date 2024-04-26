@@ -8,7 +8,11 @@ const modifyNoteLine = (line: string) => {
     /NOTE\(\d+\):\s*|NOTE\(\d+\)\[\d+\]:\s*|NOTE:\s*|NOTE\[\d+\]:\s*|\s*\*\/}|\s*-->|\s*\*\//
   )[1];
 
-  return `- ${noteNumber ? `(${noteNumber}) ` : ""}${text}`;
+  const isHeading = text.startsWith("#");
+
+  return `${isHeading ? "" : "-"} ${
+    noteNumber ? `(${noteNumber}) ` : ""
+  }${text}`;
 };
 
 const getLineAndBlockText = (lines: IFoundLine[], fileExt: string) =>
