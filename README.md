@@ -22,5 +22,5 @@ NOTE(n)[n]:[#] note text
 Optional parameters:
 
 - `(n)` - specifies a note number.
-- `[n]` - specifies the quantity of code lines to be appended under the note text (default is 5, use 0 to remove the code block).
+- `[n]` - specifies the number of code lines to be appended under the note text (default is the number of lines from the line after the note until the first empty line; use 0 to remove the code block).
 - `[#]` - dash "-" will be omitted in prepared note text if a note starts with "#"
